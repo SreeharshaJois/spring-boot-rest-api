@@ -3,6 +3,7 @@ pipeline {
 
 	environment {
 		mavenHome = tool 'jenkins-maven'
+		
 	}
 
 	tools {
@@ -44,9 +45,23 @@ pipeline {
               }
         }
 
-		stage('Deploy') {
+		stage('Upload Artefact to Nexus Repository') {
 			steps {
-			    sh "mvn jar:jar deploy:deploy"
+			    nexusArtifactUploader(
+				        nexusVersion: 'nexus3',
+				        protocol: 'http',
+				        nexusUrl: 'http://localhost:8081',
+				        groupId: 'id.test',
+				        version: 1.0.0,
+				        repository: 'springboot-app-repo',
+				        credentialsId: 'nexusCredentials',
+				        artifacts: [
+				            [artifactId: "spring-boot-testing",
+				             classifier: '',
+				             file: 'spring-boot-testing-' + '1.0.0.jar',
+				             type: 'jar']
+				        ]
+     				)
 			}
 		}
 	}
