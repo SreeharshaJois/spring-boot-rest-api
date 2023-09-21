@@ -52,7 +52,7 @@ pipeline {
 				        protocol: 'http',
 				        nexusUrl: 'http://localhost:8081',
 				        groupId: 'id.test',
-				        version: 1.0.0,
+				        version: '1.0.0',
 				        repository: 'springboot-app-repo',
 				        credentialsId: 'nexusCredentials',
 				        artifacts: [
