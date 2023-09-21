@@ -58,7 +58,7 @@ pipeline {
 				        artifacts: [
 				            [artifactId: "spring-boot-testing",
 				             classifier: '',
-				             file: 'spring-boot-testing-' + '1.0.0.jar',
+				             file: 'spring-boot-testing' + '.jar',
 				             type: 'jar']
 				        ]
      				)
